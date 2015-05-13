@@ -1,0 +1,6 @@
+[submodule "lib/gnupg"]
+	path = lib/gnupg
+	url = git@github.com:isislovecruft/python-gnupg.git
+[submodule "c_utils"]
+	path = c_utils
+	url = git@gist.github.com:/d4c45902ef5551fe112c.git
