@@ -15,8 +15,6 @@ def __setup(with_config):
 			DEFAULT_NOTARY_DOC_DIR, DEFAULT_NOTARY_DOC_DIR, None),
 		DUtilsKey("MD_FORMATTING", "Markdown formatting (i.e. jekyll)",
 			None, "none", None),
-		DUtilsKey("DEFAULT_OUTPUT_DIR", "Default output directory (where all exported data should be saved)",
-			None, "parent directory of media", None),
 		DUtilsKey("POE_SERVER", "Host IP of your Proof of Existence server (like, http://localhost:8080)", \
 			None, "None", None),
 		DUtilsKey("POE_SERVER_ALIAS", "Alias of your Proof of Existence server", None, "None", None),
@@ -32,8 +30,8 @@ def __setup(with_config):
 	if res:
 		from fabric.api import settings, local
 
-		for p in ['DEFAULT_OUTPUT_DIR', 'NOTARY_DOC_DIR']:
-			if config[p] is not None and os.path.exists(p):
+		for p in ['NOTARY_DOC_DIR']:
+			if config[p] is not None and not os.path.exists(p):
 				with settings(warn_only=True):
 					local("mkdir -p %s" % config[p])
 
